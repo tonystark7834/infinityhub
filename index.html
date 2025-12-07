@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfinityHub - Movie Trailers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="logo"><i class="fas fa-film"></i> InfinityHub</div>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Genres</a></li>
+            <li><a href="#" onclick="showWatchlist()">Watchlist</a></li>
+        </ul>
+    </nav>
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search movies..." oninput="filterMovies()">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="user"><i class="fas fa-user"></i> Profile</div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Featured: Avengers: Endgame</h1>
+            <p>Watch the epic trailer now!</p>
+            <button onclick="playTrailer('https://www.youtube.com/embed/TcMBFSGVi1c')"><i class="fas fa-play"></i> Play Trailer</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://image.tmdb.org/t/p/w1280/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg" alt="Avengers Endgame" loading="lazy">
+        </div>
+    </section>
+
+    <section class="movies" id="moviesContainer">
+        <div class="loading" id="loadingSpinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading movies...
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2023 InfinityHub. Powered by TMDB API.</p>
+</footer>
+
+<div id="trailerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeTrailer()">&times;</span>
+        <iframe id="trailerFrame" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+        <div class="suggestions" id="suggestions"></div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
