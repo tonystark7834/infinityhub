@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>InfinityHub - Home</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfinityHub - Movie Trailers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="topbar">
-      <div class="logo"><i class="fas fa-film"></i> InfinityHub</div>
-
-      <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <div class="genres-dropdown">
-          <button id="genresBtn">Genres ▾</button>
-          <div id="genresList" class="dropdown-content"></div>
-        </div>
-        <a href="#" onclick="showWatchlist()">Watchlist</a>
-      </nav>
-
-      <div class="search">
-        <input id="searchInput" placeholder="Search movies..." />
-      </div>
+<header>
+    <div class="logo"><i class="fas fa-film"></i> InfinityHub</div>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Genres</a></li>
+            <li><a href="#" onclick="showWatchlist()">Watchlist</a></li>
+        </ul>
+    </nav>
+    <div class="search">
+        <input type="text" id="searchInput" placeholder="Search movies..." oninput="filterMovies()">
+        <button id="searchBtn"><i class="fas fa-search"></i></button>
     </div>
-  </header>
+    <div class="user"><i class="fas fa-user"></i> Profile</div>
+</header>
 
-  <main>
+<main>
     <section class="hero">
-      <div class="hero-left">
-        <h1>InfinityHub</h1>
-        <p>Explore movies from TMDB. Click play on any movie to watch trailer.</p>
-      </div>
-      <div class="hero-right">
-        <button id="heroPlayBtn" class="btn">Featured Trailer</button>
-      </div>
+        <div class="hero-content">
+            <h1>Featured: Avengers: Endgame</h1>
+            <p>Watch the epic trailer now!</p>
+            <button onclick="playTrailer('https://www.youtube.com/embed/TcMBFSGVi1c')">
+                <i class="fas fa-play"></i> Play Trailer
+            </button>
+        </div>
+        <div class="hero-image">
+            <img src="https://image.tmdb.org/t/p/w1280/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg" alt="Avengers Endgame" loading="lazy">
+        </div>
     </section>
 
-    <section id="homeSections" class="home-sections">
-      <div id="loadingHome" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+    <section class="movies" id="moviesContainer">
+        <div class="loading" id="loadingSpinner">
+            <i class="fas fa-spinner fa-spin"></i> Loading movies...
+        </div>
     </section>
-  </main>
+</main>
 
-  <footer>&copy; InfinityHub</footer>
+<footer>
+    <p>&copy; 2023 InfinityHub. Powered by TMDB API.</p>
+</footer>
 
-  <!-- Trailer Modal -->
-  <div id="trailerModal" class="modal">
-    <div class="modal-inner">
-      <button class="modal-close" onclick="closeTrailer()">✕</button>
-      <iframe id="trailerFrame" width="100%" height="480" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- Trailer Modal -->
+<div id="trailerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeTrailer()">&times;</span>
+        <iframe id="trailerFrame" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
     </div>
-  </div>
+</div>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
