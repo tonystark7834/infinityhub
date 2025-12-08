@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Genre - InfinityHub</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="logo"><i class="fas fa-film"></i> InfinityHub</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+      </nav>
+      <div class="search">
+        <input id="searchInput" placeholder="Search movies..." />
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="genre-header">
+      <h1 id="genreTitle">Genre</h1>
+      <p id="genreCount"></p>
+    </section>
+
+    <section id="genreMovies" class="movie-grid">
+      <div id="loading" class="loading"><i class="fas fa-spinner fa-spin"></i> Loading movies...</div>
+    </section>
+  </main>
+
+  <footer>&copy; InfinityHub</footer>
+
+  <!-- Trailer Modal -->
+  <div id="trailerModal" class="modal">
+    <div class="modal-inner">
+      <button class="modal-close" onclick="closeTrailer()">✕</button>
+      <iframe id="trailerFrame" width="100%" height="480" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // genre page specific init
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const genreId = params.get('id');
+      const genreName = params.get('name') || 'Genre';
+
+      if (!genreId) {
+        document.getElementById('genreTitle').textContent = 'Genre not specified';
+        document.getElementById('loading').textContent = 'No genre selected.';
+        return;
+      }
+
+      document.getElementById('genreTitle').textContent = genreName;
+      initGenrePage(genreId, genreName);
+    })();
+  </script>
+</body>
+</html>
