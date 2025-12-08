@@ -29,7 +29,9 @@
         <div class="hero-content">
             <h1>Featured: Avengers: Endgame</h1>
             <p>Watch the epic trailer now!</p>
-            <button onclick="playTrailer('https://www.youtube.com/embed/TcMBFSGVi1c')"><i class="fas fa-play"></i> Play Trailer</button>
+            <button onclick="playTrailer('https://www.youtube.com/embed/TcMBFSGVi1c')">
+                <i class="fas fa-play"></i> Play Trailer
+            </button>
         </div>
         <div class="hero-image">
             <img src="https://image.tmdb.org/t/p/w1280/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg" alt="Avengers Endgame" loading="lazy">
@@ -47,11 +49,11 @@
     <p>&copy; 2023 InfinityHub. Powered by TMDB API.</p>
 </footer>
 
+<!-- Trailer Modal -->
 <div id="trailerModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeTrailer()">&times;</span>
         <iframe id="trailerFrame" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
-        <div class="suggestions" id="suggestions"></div>
     </div>
 </div>
 
